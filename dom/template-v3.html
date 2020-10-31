@@ -1,0 +1,23 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app" style="display: flex; flex-direction:column; align-items:center">
+  <h1>{{titulo}} - {{version}}</h1>
+  <h2>{{saudacao()}}</h2>
+</div>
+
+<script>
+  new Vue({
+    el: "#app",
+    data: {
+      titulo: "Usando VueJS!",
+      version: "V3"
+    },
+    methods: {
+      saudacao() {
+        // this -> Representa a instância do Vue
+        console.log(this.titulo);
+        return 'Boa semana!';
+      }
+    }
+  });
+</script>

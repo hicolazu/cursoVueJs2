@@ -1,0 +1,28 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app" style="display: flex; flex-direction:column; align-items:center">
+  <h1>{{titulo}} - {{version}}</h1>
+  <h2>{{saudacao()}}</h2>
+
+  <!-- Diretiva v-bind -> "Liga" um dado da Vue instance 
+    com uma propriedade do html-->
+  <a v-bind:href="link">Google</a>
+</div>
+
+<script>
+  new Vue({
+    el: "#app",
+    data: {
+      titulo: "Usando VueJS!",
+      version: "V4",
+      link: "http://google.com.br"
+    },
+    methods: {
+      saudacao() {
+        // this -> Representa a instância do Vue
+        console.log(this.titulo);
+        return 'Boa semana!';
+      }
+    }
+  });
+</script>

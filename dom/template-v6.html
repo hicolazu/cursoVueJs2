@@ -1,0 +1,33 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app" :style="style">
+  <h1 v-once>{{titulo}} - {{version}}</h1>
+  <h2>{{saudacao()}}</h2>
+  <a :href="link">Google</a>
+
+  <hr> 
+  <!-- Diretiva v-html -> Renderiza o html -->
+  <p v-html="linkHtml"></p>
+
+   <!-- Sem a diretiva, o -->
+  <p>{{linkHtml}}</p>
+</div>
+
+<script>
+  new Vue({
+    el: "#app",
+    data: {
+      titulo: "Usando VueJS!",
+      version: "V6",
+      link: "http://google.com.br",
+      linkHtml: "<a href='http://google.com.br'>Google</a>",
+      style: "display: flex; flex-direction:column; align-items:center; color: #2a9d8f;"
+    },
+    methods: {
+      saudacao() {
+        this.titulo = "Bom dia!!!";
+        return this.titulo;
+      }
+    }
+  });
+</script>

@@ -1,0 +1,55 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app" :style="style">
+  <h1>{{titulo}} - {{version}}</h1>
+  
+  <hr>
+
+  <p> {{contador}} </p>
+  <button v-on:click="somar(5, $event)">Somar {{passo}}</button>
+  <p>{{event}}</p>
+
+  <hr>
+
+  <div 
+    v-on:mousemove="atualizarXY"
+    style="border: 1px solid black; background-color: powderblue; width: 50%; height: 200px; text-align: center;"
+    >
+    <p> Mouse {{x}} e {{y}}  </p>
+    <!-- Modificador de Evento Stop -> Para a execução do evento atual -->
+    <span v-on:mousemove.stop="">PARAR AQUI!!!</span> 
+  </div>
+  
+  <!-- Modificador de Evento Prevent -> Previne o comportamento padrão de um evento -->
+  <a v-on:click.prevent="callbackPrevent" href="http://google.com.br">Google</a>
+
+</div>
+
+<script>
+  new Vue({
+    el: "#app",
+    data: {
+      titulo: "Usando VueJS!",
+      version: "V4",
+      style: "display: flex; flex-direction:column; align-items:center; color: #2a9d8f;",
+      contador: 0,
+      x: 0,
+      y: 0,
+      passo: 5,
+      event: ""
+    },
+    methods: {
+      somar(passo, event) {
+        this.event = event;
+        this.contador += passo;
+      },
+      atualizarXY(e) {
+        this.x = e.clientX;
+        this.y = e.clientY;
+      },
+      callbackPrevent() {
+        console.log('Evento prevenido!');
+      }
+    }
+  });
+</script>

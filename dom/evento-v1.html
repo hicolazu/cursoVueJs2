@@ -1,0 +1,28 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app" :style="style">
+  <h1>{{titulo}} - {{version}}</h1>
+  
+  <hr>
+
+  <p> {{contador}} </p>
+  <!-- Diretiva v-on -> Liga um evento a execução de uma função -->
+  <button v-on:click="somar">Somar 1</button>
+</div>
+
+<script>
+  new Vue({
+    el: "#app",
+    data: {
+      titulo: "Usando VueJS!",
+      version: "V1",
+      style: "display: flex; flex-direction:column; align-items:center; color: #2a9d8f;",
+      contador: 0
+    },
+    methods: {
+      somar() {
+        this.contador++;
+      }
+    }
+  });
+</script>

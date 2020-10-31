@@ -1,0 +1,26 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app" style="display: flex; flex-direction:column; align-items:center; color: #2a9d8f;">
+  <!-- Diretiva v-once -> O elemento é carregado apenas 1 vez,
+  evitando re-renderização desnecessária-->
+  <h1 v-once>{{titulo}} - {{version}}</h1>
+  <h2>{{saudacao()}}</h2>
+  <a :href="link">Google</a>
+</div>
+
+<script>
+  new Vue({
+    el: "#app",
+    data: {
+      titulo: "Usando VueJS!",
+      version: "V5",
+      link: "http://google.com.br"
+    },
+    methods: {
+      saudacao() {
+        this.titulo = "Bom dia!!!";
+        return this.titulo;
+      }
+    }
+  });
+</script>
