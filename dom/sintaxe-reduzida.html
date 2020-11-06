@@ -1,0 +1,32 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app" :style="style">
+  <h1>{{titulo}} - {{version}}</h1>
+  
+  <hr>
+
+  <p> {{contador}} </p>
+  <!-- Sintaxe Reduzida: v-on = @ -->
+  <button @click="somar">Somar 1</button>
+
+  <!-- Sintaxe Reduzida: v-bind = : -->
+  <input type="text" :value="contador">
+
+</div>
+
+<script>
+  new Vue({
+    el: "#app",
+    data: {
+      titulo: "Eventos",
+      version: "V1",
+      style: "display: flex; flex-direction:column; align-items:center; color: #2a9d8f;",
+      contador: 0
+    },
+    methods: {
+      somar() {
+        this.contador++;
+      }
+    }
+  });
+</script>

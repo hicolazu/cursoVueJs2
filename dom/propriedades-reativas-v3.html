@@ -1,0 +1,50 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app" :style="style">
+  <h1>{{titulo}} - {{version}}</h1>
+
+  <button v-on:click="aumentar">Aumentar</button>
+  <button v-on:click="aumentar2">Aumentar2</button>
+  <button v-on:click="diminuir">Diminuir</button>
+
+  <p>Contador: {{contador}} | {{contador2}}</p>
+
+  <p>Resultado: {{resultado}}</p>
+</div>
+
+<script>
+  new Vue({
+    el: "#app",
+    data: {
+      titulo: "Propriedades Reativas",
+      version: "V3",
+      style: "display: flex; flex-direction:column; align-items:center; color: #2a9d8f;",
+      contador: 0,
+      contador2: 0
+    },
+    computed: {
+      resultado() {
+        return this.contador >= 5 ? "Maior ou igual a 5" : "Menor que 5";
+      }
+    },
+    watch: {
+      // será chamada toda vez que houver alteração no campo "contador"
+      contador(novo, antigo) {
+        // é assíncrono!
+        console.log("Método Watch chamado");
+        console.log(novo, antigo);
+      }
+    },
+    methods: {
+      aumentar() {
+        this.contador++;
+      },
+      aumentar2() {
+        this.contador2++;
+      },
+      diminuir() {
+        this.contador--;
+      }
+    }
+  });
+</script>
